@@ -76,7 +76,7 @@ if(cokgen==1):
         print("Eşkenar bir üçgen seçtiniz.")
     elif((a*a)+(b*b)==(c*c) or (c*c)+(b*b)==(a*a) or (a*a)+(c*c)==(b*b)  ) :
         print("Dik üçgen seçmişsiniz.")
-    elif(abs(c-b)<a<c+b or abs(a-b)<c<a+b or abs(a-c)<b<a+c):
+    elif(abs(c-b)<a<c+b and abs(a-b)<c<a+b and abs(a-c)<b<a+c):
         print("Normal bir üçgen seçmişsiniz.")
     elif(a==b!=c or a==c!=b or b==c!=a):
         print("İkizkenar üçgen girmişsiniz.")
