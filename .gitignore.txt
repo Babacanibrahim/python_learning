@@ -1,0 +1,13 @@
+# Python cache dosyaları
+__pycache__/
+*.pyc
+*.pyo
+
+# SQLite veritabanı dosyası
+kütüphane.db
+
+# VSCode gibi editör ayar dosyaları
+.vscode/
+
+# MacOS gereksiz dosyası
+.DS_Store
