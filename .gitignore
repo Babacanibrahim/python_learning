@@ -5,6 +5,7 @@ __pycache__/
 
 # SQLite veritabanı dosyası
 kütüphane.db
+musicapp.db
 
 # VSCode gibi editör ayar dosyaları
 .vscode/
