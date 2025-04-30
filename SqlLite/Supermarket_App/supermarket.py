@@ -21,20 +21,25 @@ class SuperMarket():
     def list_products(self):
         self.cursor.execute("SELECT * FROM Products")
         products=self.cursor.fetchall()
-
-        for i in products:
-            product=(i[0],i[1],i[2],i[3])
-            print(product,"\n***************************************")
+        if len(products)!=0:
+            for i in products:
+                product=(i[0],i[1],i[2],i[3])
+                print(product,"\n***************************************")
+        else:
+            print("Henüz ürün bulunmuyor.")
 
 # Add product
     def add_product(self,product):
-        self.cursor.execute("INSERT INTO Products values (?,?,?,?)",(product.name,product.category,product.price,product.stock_amount))
-        self.baglanti.commit()
-        print(product.name," başarıyla eklendi.")
+        if not self.product_exists(product.name):
+            self.cursor.execute("INSERT INTO Products values (?,?,?,?)",(product.name,product.category,product.price,product.stock_amount))
+            self.baglanti.commit()
+            print(product.name," başarıyla eklendi.")
+        else:
+            print("Ürün zaten mevcut.")
 
 # Find the product
     def product_exists(self, name):
-        self.cursor.execute("SELECT 1 FROM Products WHERE name = ?", (name,))
+        self.cursor.execute("SELECT name FROM Products WHERE name = ?", (name,))
         return self.cursor.fetchone() is not None
 
 
@@ -52,7 +57,6 @@ class SuperMarket():
         result=self.cursor.fetchone()
 
         if result is None:
-            print("Ürün bulunamadı.")
             return
         stock_amount=result[0]
 
@@ -80,3 +84,15 @@ class SuperMarket():
 
         for i in products:
             print(i[0])
+
+# Product price
+    def price_product(self, name):
+        if self.product_exists(name):
+            self.cursor.execute("SELECT price FROM Products WHERE name = ?", (name,))
+            result = self.cursor.fetchone()
+            if result: 
+                return result[0]
+            else:
+                print("Fiyat bulunamadı.")
+        else:
+            print("Ürün bulunamadı.")

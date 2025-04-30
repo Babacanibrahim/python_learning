@@ -10,10 +10,17 @@ class Wallet():
 
 # Buy product
     def buy_product(self,price):
-        self.balance-=price
-        print("Yeni bakiyeniz {}".format(self.balance))
+        if self.balance>=price:
+            self.balance-=price
+            print("Yeni bakiyeniz {}".format(self.balance))
+        else:
+            print("Yetersiz bakiye.")
 
 
 # Check balance
     def check_balance(self):
         print("Bakiyeniz {} ".format(self.balance))
+
+# Check balance after buy
+    def check_balance_buy(self):
+        print("Güncel Bakiyeniz {} ".format(self.balance))
