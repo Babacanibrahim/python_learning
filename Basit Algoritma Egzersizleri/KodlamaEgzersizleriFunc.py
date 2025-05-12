@@ -2,18 +2,21 @@
 
 def asalMi(sayi):
     if(sayi==2):
-        return True
+        print(sayi , "asaldır.")
     elif (sayi>2):
         sayac=0
         for i in range(2,sayi):
             if sayi%i==0:
                 sayac+=1
         if(sayac==0):
-            return True
+            print(sayi , "asaldır.")
+
         else:
-            return False
+            print(sayi , "asal değildir.")
+
     else:
-        return False
+        print(sayi , "asal değildir.")
+        
 
 # TAM BÖLENLERİ BULMA
 
@@ -23,3 +26,6 @@ def tamBolenBulma(sayi):
         if(sayi%i==0):
             liste.append(i)
     print(liste)
+
+tamBolenBulma(850)
+asalMi(3)
