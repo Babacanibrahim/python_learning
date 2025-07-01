@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h3>Kontrol Paneli</h3>
+<hr><hr>
+<h6>Hoşgeldiniz {{session["username"]}}</h6>
+<br>
+<a href="/addarticle" class="btn btn-success">Makale Ekle</a>
+<hr><hr>
+
+<h4>Makaleleriniz</h4>
+<br>
+{% if author_articles %}
+<table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Başlık</th>
+      <th scope="col">Yayınlanma tarihi</th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+{% for article in author_articles  %}
+    <tr>
+      <td>{{loop.index}}</td>
+      <td><a href="myarticles/{{article.id}}">{{article.title}}</a></td>
+      <td>{{article.created_time}}</td>
+      <td><a href="editarticle/{{article.id}}" class="btn btn-primary">Güncelle</a></td>
+      <td>
+      <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDeleteModal{{ article.id }}">
+      Sil
+    </button>
+    <div class="modal fade" id="confirmDeleteModal{{ article.id }}" tabindex="-1" role="dialog" aria-labelledby="modalLabel{{ article.id }}" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content bg-dark text-white">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel{{ article.id }}">Silme Onayı</h5>
+            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Kapat">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p><strong>{{ article.title }}</strong> başlıklı makaleyi silmek istediğinizden emin misiniz?</p>
+          </div>
+          <div class="modal-footer">
+            <form action="{{ url_for('delete', id=article.id) }}" method="POST">
+              <button type="submit" class="btn btn-danger">Evet, Sil</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+      </td>
+      
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+
+{% else %}
+<div class="alert alert-danger">Henüz makalen bulunmuyor.</div>
+{% endif %}
+{% endblock body %}

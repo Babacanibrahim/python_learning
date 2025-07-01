@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class = "jumbotron text-center">
+<h3>İBRAHİM BABACAN BLOG SAYFASI</h3>
+<p>Buraya yazılımcılar olarak kayıt olup bloglarınızı paylaşabilirsiniz.. :)</p>
+</div>
+
+<ul>
+{% for name in names  %}
+<li>{{name.id}} - {{name.name}} {{name.lastname}}</li>
+{% endfor %}
+</ul>
+{% endblock body %}
