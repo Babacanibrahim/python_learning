@@ -13,6 +13,20 @@
     {% include "includes/navbar.html" %}
     <br><br><br><br>
     <div class="container">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert 
+            {% if message.tags == 'info' %}
+                alert-danger
+            {% else %}
+                alert-{{ message.tags }}
+            {% endif %}
+        ">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+
         {% block body %}{% endblock body %}
     </div>
 

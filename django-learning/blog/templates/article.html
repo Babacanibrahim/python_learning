@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="container mt-4">
+  <div class="card shadow-lg">
+    <div class="card-body">
+      <h1 class="card-title">{{ article.title }}</h1>
+      <p>by {{article.author}}</p>
+      <p class="card-subtitle mb-2 text-muted">
+        Oluşturulma tarihi : {{ article.created_date }}
+      </p>
+      <hr> <br>
+      <div class="card-text" style="font-size: 1.1rem; line-height: 1.7;">
+        {{article.content |safe}}
+      </div>
+    </div>
+  </div>
+
+  <a href="/articles/dashboard" class="btn btn-outline-secondary mt-3">← Kontrol paneline geri dön</a>
+</div>
+{% endblock body %}
