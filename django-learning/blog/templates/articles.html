@@ -5,6 +5,13 @@
 <h3>Makaleler</h3>
 <hr><hr>
 
+<form class="d-flex mb-3" role="search">
+    {% csrf_token %}
+    <input class="form-control me-2" type="search" name = "keyword"placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+
+
 {% if articles %}
 <table class="table table-hover table-bordered">
   <thead class="table-dark">
@@ -31,7 +38,7 @@
 </table>
 
 {% else %}
-<div class="alert alert-danger">Henüz makalen bulunmuyor.</div>
+<div class="alert alert-danger">Makale bulunamadı.</div>
 {% endif %}
 
 {% endblock  %}

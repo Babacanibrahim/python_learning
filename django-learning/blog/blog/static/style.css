@@ -1,0 +1,79 @@
+/* style.css içeriği */
+
+.container {
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 900px;
+    padding: 15px;
+}
+
+h3 {
+    color: #007bff;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+form.form-inline {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+form.form-inline input[type="search"] {
+    width: 250px;
+    padding: 6px 12px;
+    border-radius: 4px 0 0 4px;
+    border: 1px solid #ced4da;
+    outline: none;
+}
+
+form.form-inline button {
+    border-radius: 0 4px 4px 0;
+}
+
+table.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+table.table thead.table-dark th {
+    background-color: #343a40;
+    color: white;
+    padding: 12px 15px;
+    font-weight: 600;
+    text-align: left;
+}
+
+table.table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+table.table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+table.table tbody td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+table.table a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+table.table a:hover {
+    text-decoration: underline;
+}
+
+.alert-danger {
+    margin-top: 30px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+}

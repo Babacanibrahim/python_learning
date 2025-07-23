@@ -27,7 +27,7 @@
     <td>{{forloop.counter}}</td>
     <td><a href="{% url 'article:article' article.id %}">{{article.title}}</a></td>
     <td>{{article.created_date}}</td>
-    <td><a href="/articles/update/{{article.id}}" class = "btn btn-primary">Güncelle</a></td>
+    <td><a href="/articles/update/{{article.id}}" class="btn btn-info" style="color: black;">Güncelle</a></td>
     <td><form action="{% url 'article:delete' article.id %}" method="POST" style="display:inline;">
     {% csrf_token %}
     <button type="submit" class="btn btn-danger" onclick="return confirm('Bu makaleyi silmek istediğinizden emin misiniz?');">Sil</button>
