@@ -17,4 +17,37 @@
   </div>
 
 </div>
+
+<div class="container my-5">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title mb-4">Yorum Ekle</h5>
+
+      <form method="POST" action="{% url 'article:comment' article.id %}">
+        {% csrf_token %}
+
+        <div class="mb-3">
+          {{ form.comment_author.label_tag }}
+          {{ form.comment_author }}
+          {% if form.comment_author.errors %}
+            <div class="text-danger small">{{ form.comment_author.errors }}</div>
+          {% endif %}
+        </div>
+
+        <div class="mb-3">
+          {{ form.comment_content.label_tag }}
+          {{ form.comment_content }}
+          {% if form.comment_content.errors %}
+            <div class="text-danger small">{{ form.comment_content.errors }}</div>
+          {% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Gönder</button>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
 {% endblock body %}

@@ -55,8 +55,10 @@ def addarticle(request):
 # Makale Detay
 def article(request, id):
     article = get_object_or_404(Article, id=id)
+    form = forms.CommentForm()
     context = {
-        "article" : article
+        "article" : article,
+        "form" : form
     }
     return render(request, "article.html" , context)
 
@@ -94,3 +96,22 @@ def delete_article(request, id):
         return redirect("article:dashboard")
     
     return render(request,"dashboard.html")
+
+# Yorum Ekleme
+@login_required
+def addComment(request, id):
+    article = get_object_or_404(Article, id = id)
+
+    if request.method =="POST":
+        form = forms.CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit = False)
+            comment.article = article
+            comment.save()
+            messages.success(request, "Yorumunuz başarılı şekilde gönderildi.")
+            return redirect("article:article", id = id)
+        
+    else:
+        form = forms.CommentForm()
+
+    return render(request, "article.html", {"form" : form, "article":article})
