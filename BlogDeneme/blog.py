@@ -37,7 +37,7 @@ app.secret_key="ibblog"
 
 app.config["MYSQL_HOST"]= "localhost"
 app.config["MYSQL_USER"]= "root"
-app.config["MYSQL_PASSWORD"]= ""
+app.config["MYSQL_PASSWORD"]= "root1234."
 app.config["MYSQL_DB"]= "ibblog"
 app.config["MYSQL_CURSORCLASS"]= "DictCursor"
 

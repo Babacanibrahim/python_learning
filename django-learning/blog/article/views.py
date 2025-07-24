@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse , redirect , get_object_or_404
 from . import forms
 from django.contrib import messages
-from .models import Article
+from .models import Article , Comment
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -56,9 +56,13 @@ def addarticle(request):
 def article(request, id):
     article = get_object_or_404(Article, id=id)
     form = forms.CommentForm()
+    
+    # Makaledeki yorumlar
+    comments = Comment.objects.filter(article = article)
     context = {
         "article" : article,
-        "form" : form
+        "form" : form,
+        "comments" : comments
     }
     return render(request, "article.html" , context)
 
@@ -114,4 +118,5 @@ def addComment(request, id):
     else:
         form = forms.CommentForm()
 
-    return render(request, "article.html", {"form" : form, "article":article})
+    comments = Comment.objects.filter(article=article)
+    return render(request, "article.html", {"form" : form, "article":article, "comments":comments})

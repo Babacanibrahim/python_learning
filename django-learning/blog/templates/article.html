@@ -18,6 +18,21 @@
 
 </div>
 
+<div style ="margin-top :100px" class="text-center py-5 bg-light rounded">
+    <h3 class="display-5">Son Yorumlar</h3>
+   {% for comment in comments %}
+  <div class="mb-4 text-start px-4">
+    <h5>{{ comment.comment_author }}</h5>
+    <p>{{ comment.comment_content|safe }}</p>
+    <small class="text-muted">{{ comment.comment_created_date }}</small>
+    <hr>
+  </div>
+{% empty %}
+  <p>Henüz yorum yapılmamış.</p>
+{% endfor %}
+    
+</div>
+
 <div class="container my-5">
   <div class="card shadow-sm">
     <div class="card-body">
